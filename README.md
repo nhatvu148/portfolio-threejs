@@ -224,9 +224,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 📧 Contact
 
-- **Email**: nhatvu.nguyen@example.com
+- **Email**: nhatvu148@gmail.com
 - **GitHub**: https://github.com/nhatvu148
-- **LinkedIn**: https://linkedin.com/in/nhatvu-nguyen
+- **LinkedIn**: https://linkedin.com/in/van-nhat-vu-nguyen
 
 ## 🙏 Acknowledgments
 
