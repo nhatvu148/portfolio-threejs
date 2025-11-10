@@ -54,22 +54,31 @@ function App() {
 
   if (loading) {
     return (
-      <div className="w-full h-screen flex items-center justify-center loading-screen">
+      <div className="w-full h-screen flex items-center justify-center space-gradient">
         <div className="text-center">
-          <div className="w-20 h-20 mx-auto mb-4 border-4 border-tech-cyan border-t-transparent rounded-full animate-spin" />
-          <h1 className="text-2xl font-bold text-white mb-2 glow-text">
-            Initializing Solar System...
+          <div className="relative mb-8">
+            <div className="w-24 h-24 mx-auto border-4 border-tech-cyan/30 border-t-tech-cyan rounded-full animate-spin"></div>
+            <div className="absolute inset-0 w-24 h-24 mx-auto border-4 border-transparent border-b-tech-purple/50 rounded-full animate-spin" style={{animationDelay: '150ms'}}></div>
+            <div className="absolute inset-2 w-20 h-20 mx-auto border-4 border-transparent border-l-accent-orange/30 rounded-full animate-spin" style={{animationDelay: '300ms'}}></div>
+          </div>
+          <h1 className="text-3xl font-bold text-white mb-3 bg-gradient-to-r from-tech-cyan to-tech-purple bg-clip-text text-transparent">
+            Initializing Professional Portfolio...
           </h1>
-          <p className="text-gray-400 text-sm">
-            Loading 3D assets and preparing your journey
+          <p className="text-gray-300 text-sm mb-4">
+            Loading your interactive career journey
           </p>
+          <div className="flex items-center justify-center space-x-2">
+            <div className="w-2 h-2 bg-tech-cyan rounded-full animate-pulse"></div>
+            <div className="w-2 h-2 bg-tech-purple rounded-full animate-pulse" style={{animationDelay: '200ms'}}></div>
+            <div className="w-2 h-2 bg-accent-orange rounded-full animate-pulse" style={{animationDelay: '400ms'}}></div>
+          </div>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-space-blue">
+    <div className="relative w-full h-screen overflow-hidden space-gradient">
       {/* 3D Scene - Re-enabled with working data */}
       <Scene
         onPlanetClick={handlePlanetClick}

@@ -13,7 +13,7 @@ interface SceneProps {
 
 export default function Scene({ onPlanetClick, onPlanetHover }: SceneProps) {
   return (
-    <div className="w-full h-screen relative bg-slate-900">
+    <div className="w-full h-screen relative bg-slate-800">
       <Canvas
         gl={{
           antialias: true,
@@ -30,7 +30,7 @@ export default function Scene({ onPlanetClick, onPlanetHover }: SceneProps) {
       >
         <Suspense fallback={null}>
           {/* Enhanced realistic lighting setup */}
-          <ambientLight intensity={0.05} color="#0f172a" />
+          <ambientLight intensity={0.15} color="#1e293b" />
 
           {/* Main sun light with realistic properties */}
           <pointLight
@@ -58,7 +58,7 @@ export default function Scene({ onPlanetClick, onPlanetHover }: SceneProps) {
           {/* Fill light for ambient illumination */}
           <directionalLight
             position={[-5, 2, -5]}
-            intensity={0.4}
+            intensity={0.8}
             color="#87ceeb"
           />
 
@@ -76,15 +76,16 @@ export default function Scene({ onPlanetClick, onPlanetHover }: SceneProps) {
             color="#4169e1"
           />
 
-          {/* Very bright starfield background */}
+          {/* Lighter, more visible starfield background */}
           <Stars
             radius={500}
             depth={100}
-            count={12000}
-            factor={10}
-            saturation={0}
+            count={8000}
+            factor={15}
+            saturation={0.2}
             fade
-            speed={1}
+            speed={0.5}
+            opacity={0.8}
           />
 
           {/* Main solar system */}
