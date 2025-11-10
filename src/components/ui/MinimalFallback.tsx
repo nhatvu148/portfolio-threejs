@@ -42,7 +42,7 @@ export default function MinimalFallback() {
   return (
     <div className="w-full h-screen flex items-center justify-center bg-space-blue">
       <div className="text-center">
-        <h1 className="text-4xl font-bold text-white mb-4">Nhật Vũ Nguyễn</h1>
+        <h1 className="text-4xl font-bold text-white mb-4">Nhat-Vu Nguyen</h1>
         <p className="text-xl text-gray-300 mb-8">Software Engineer Portfolio</p>
 
         <div className="grid grid-cols-2 gap-4 max-w-md mx-auto mb-8">

@@ -11,7 +11,7 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
       manifest: {
-        name: 'Nhật Vũ Nguyễn - 3D Portfolio',
+        name: 'Nhat-Vu Nguyen - 3D Portfolio',
         short_name: '3D Portfolio',
         description: 'Interactive 3D solar system portfolio showcasing software engineering skills',
         theme_color: '#0f172a',

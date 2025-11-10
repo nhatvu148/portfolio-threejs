@@ -12,10 +12,10 @@ interface MetaTags {
 
 export class SEOManager {
   private static defaultMeta: MetaTags = {
-    title: 'Nhật Vũ Nguyễn - 3D Portfolio',
+    title: 'Nhat-Vu Nguyen - 3D Portfolio',
     description: 'Interactive 3D solar system portfolio showcasing software engineering skills, full-stack development, and CAE expertise',
     keywords: '3D portfolio, React, Three.js, Software Engineer, Full Stack, CAE, FEA, TypeScript, Rust, Go',
-    author: 'Nhật Vũ Nguyễn',
+    author: 'Nhat-Vu Nguyen',
     type: 'website'
   }
 
@@ -113,7 +113,7 @@ export class SEOManager {
     return {
       '@context': 'https://schema.org',
       '@type': 'Person',
-      name: 'Nhật Vũ Nguyễn',
+      name: 'Nhat-Vu Nguyen',
       jobTitle: 'Software Engineer',
       description: 'Software Engineer with expertise in full-stack development, CAE integration, and 3D visualization',
       url: window.location.href,
@@ -152,12 +152,12 @@ export class SEOManager {
     return {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
-      name: 'Nhật Vũ Nguyễn - 3D Portfolio',
+      name: 'Nhat-Vu Nguyen - 3D Portfolio',
       description: 'Interactive 3D solar system portfolio showcasing software engineering skills',
       url: window.location.href,
       author: {
         '@type': 'Person',
-        name: 'Nhật Vũ Nguyễn'
+        name: 'Nhat-Vu Nguyen'
       },
       about: [
         'Software Engineering',

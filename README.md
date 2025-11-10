@@ -1,4 +1,4 @@
-# Nhật Vũ Nguyễn - 3D Solar System Portfolio
+# Nhat-Vu Nguyen - 3D Solar System Portfolio
 
 An interactive 3D solar system portfolio built with React Three Fiber, showcasing software engineering skills through an immersive space exploration experience.
 
