@@ -8,7 +8,7 @@ interface OrbitPathProps {
   opacity?: number
 }
 
-export default function OrbitPath({ radius, inclination, color = '#ffffff', opacity = 0.8 }: OrbitPathProps) {
+export default function OrbitPath({ radius, inclination: _inclination, color = '#ffffff', opacity = 0.8 }: OrbitPathProps) {
   const points = useMemo(() => {
     const pts = []
     const segments = 128 // More segments for smoother circles

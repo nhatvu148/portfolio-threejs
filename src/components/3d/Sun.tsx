@@ -1,4 +1,4 @@
-import { useRef, useMemo } from 'react'
+import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
@@ -9,7 +9,7 @@ export default function Sun() {
   const meshRef = useRef<THREE.Mesh>(null)
 
   // Animate sun rotation
-  useFrame((state, delta) => {
+  useFrame((_state, delta) => {
     if (meshRef.current) {
       meshRef.current.rotation.y += delta * 0.05
     }

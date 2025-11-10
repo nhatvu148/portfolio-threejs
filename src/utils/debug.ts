@@ -32,11 +32,13 @@ export class DebugLogger {
   }
 }
 
+import * as THREE from 'three'
+
 // WebGPU/Three.js compatibility check
 export class CompatibilityChecker {
   static checkWebGLSupport() {
     const canvas = document.createElement('canvas')
-    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl')
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl') as WebGLRenderingContext | null
 
     if (!gl) {
       DebugLogger.error('WebGL not supported')

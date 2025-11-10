@@ -1,0 +1,13 @@
+services:
+  portfolio-frontend:
+    image: portfolio-frontend:latest
+    container_name: portfolio-frontend
+    ports:
+      - "${PORTFOLIO_FRONTEND_PORT:-3000}:80"
+    environment:
+      - NODE_ENV=${PORTFOLIO_NODE_ENV:-production}
+    restart: unless-stopped
+
+networks:
+  default:
+    driver: bridge

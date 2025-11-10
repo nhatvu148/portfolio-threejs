@@ -6,7 +6,6 @@ export default function NavigationUI() {
   const {
     currentPlanet,
     planets,
-    hoveredPlanet,
     setCurrentPlanet,
     setModalOpen,
     setSelectedPlanet
@@ -189,8 +188,7 @@ export default function NavigationUI() {
           </div>
           {planets.map((planet, index) => {
             const isActive = currentPlanet === planet.id
-            const isHovered = hoveredPlanet === planet.id
-            return (
+                        return (
               <motion.button
                 key={planet.id}
                 initial={{ opacity: 0, x: -20 }}

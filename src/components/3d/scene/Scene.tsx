@@ -1,7 +1,6 @@
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Stars } from '@react-three/drei'
 import { Suspense } from 'react'
-import { DebugLogger } from '../../../utils/debug'
 
 import SolarSystem from '../SolarSystem'
 import LoadingScreen from '../../ui/LoadingScreen'
@@ -85,7 +84,6 @@ export default function Scene({ onPlanetClick, onPlanetHover }: SceneProps) {
             saturation={0.2}
             fade
             speed={0.5}
-            opacity={0.8}
           />
 
           {/* Main solar system */}

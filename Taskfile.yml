@@ -1,0 +1,100 @@
+version: "3"
+
+vars:
+  FRONTEND_IMAGE: portfolio-frontend:latest
+  DEPLOY_SERVER: 172.237.66.246
+
+dotenv: ['.env.defaults', '.env']
+
+tasks:
+  dev:
+    desc: Run portfolio in development mode (local)
+    cmds:
+      - npm run dev
+
+  build:
+    desc: Build portfolio for production
+    cmds:
+      - npm run build
+
+  build:docker:
+    desc: Build portfolio Docker image using Earthfile
+    cmds:
+      - earthly +frontend-docker
+
+  run:
+    desc: Run portfolio container on configured port
+    deps: [build:docker]
+    cmds:
+      - docker run --rm -p ${PORTFOLIO_FRONTEND_PORT:-3000}:80 {{.FRONTEND_IMAGE}}
+
+  up:
+    desc: Start portfolio with docker-compose (builds image)
+    deps: [build:docker]
+    cmds:
+      - docker-compose up -d
+      - echo "🚀 Portfolio is running at http://localhost:${PORTFOLIO_FRONTEND_PORT:-3000}"
+
+  down:
+    desc: Stop docker-compose services
+    cmds:
+      - docker-compose down
+
+  stop:
+    desc: Stop running portfolio container
+    cmds:
+      - docker stop portfolio-frontend || true
+
+  clean:
+    desc: Remove Docker image
+    cmds:
+      - docker rmi {{.FRONTEND_IMAGE}} || true
+
+  logs:
+    desc: Show portfolio container logs
+    cmds:
+      - docker logs portfolio-frontend -f
+
+  save:
+    desc: Save portfolio Docker image to file
+    cmds:
+      - echo "Saving {{.FRONTEND_IMAGE}} to portfolio-frontend.tar.gz..."
+      - docker save {{.FRONTEND_IMAGE}} | gzip > portfolio-frontend.tar.gz
+      - echo "✅ Image saved to portfolio-frontend.tar.gz ($(du -h portfolio-frontend.tar.gz | cut -f1))"
+
+  load:
+    desc: Load portfolio Docker image from file
+    cmds:
+      - echo "Loading portfolio image from portfolio-frontend.tar.gz..."
+      - gunzip -c portfolio-frontend.tar.gz | docker load
+      - echo "✅ Portfolio image loaded successfully"
+
+  deploy:
+    desc: Build, save image and deploy to remote server
+    deps: [build:docker, save]
+    cmds:
+      - echo "🚀 Deploying portfolio to remote server..."
+      - scp portfolio-frontend.tar.gz root@{{.DEPLOY_SERVER}}:/root/portfolio/
+      - echo "✅ Image uploaded to remote server at /root/portfolio/"
+      - echo "💡 Next - SSH to server and run docker load commands"
+      - echo "🚀 Loading image on remote server..."
+      - ssh root@{{.DEPLOY_SERVER}} "cd /root/portfolio && task load"
+      - echo "✅ Image loaded successfully"
+
+  preview:
+    desc: Preview production build locally
+    deps: [build]
+    cmds:
+      - npm run preview
+
+  lint:
+    desc: Run linting
+    cmds:
+      - npm run lint
+
+  clean:all:
+    desc: Clean build artifacts and Docker
+    cmds:
+      - rm -rf dist/
+      - rm -f portfolio-frontend.tar.gz
+      - task clean

@@ -48,7 +48,7 @@ function App() {
   }
 
   // Handle planet hover
-  const handlePlanetHover = (planetId: string | null) => {
+  const handlePlanetHover = (_planetId: string | null) => {
     // This will be used for UI feedback
   }
 
