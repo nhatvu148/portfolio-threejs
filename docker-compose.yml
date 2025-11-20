@@ -6,7 +6,7 @@ services:
     # ports:
     #   - "${PORTFOLIO_FRONTEND_PORT:-3000}:80"
     networks:
-      - erp-network
+      - erp-app_erp-network
     environment:
       - NODE_ENV=${PORTFOLIO_NODE_ENV:-production}
     restart: unless-stopped
@@ -14,5 +14,5 @@ services:
 networks:
   # default:
   #   driver: bridge
-  erp-network:
+  erp-app_erp-network:
     external: true  # Connect to existing network created by ERP
