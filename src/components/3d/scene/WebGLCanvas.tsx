@@ -12,11 +12,12 @@ export default function WebGLCanvas({ children, className = "", onError }: WebGL
   const [retryCount, setRetryCount] = useState(0)
   const [isInitializing, setIsInitializing] = useState(true)
 
-  const handleCanvasError = (error: Error) => {
+  const handleCanvasError = (error: any) => {
     console.error('WebGL Canvas error:', error)
-    setWebglError(error)
+    const errorObj = error instanceof Error ? error : new Error(String(error))
+    setWebglError(errorObj)
     setIsInitializing(false)
-    onError?.(error)
+    onError?.(errorObj)
   }
 
   // Try different configurations in order of compatibility
@@ -60,7 +61,7 @@ export default function WebGLCanvas({ children, className = "", onError }: WebGL
   ]
 
   const getCameraConfig = () => ({
-    position: [0, 50, 100],
+    position: [0, 50, 100] as [number, number, number],
     fov: 75,
     near: 0.1,
     far: 1000

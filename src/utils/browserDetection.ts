@@ -14,7 +14,7 @@ export function detectBrowser(): BrowserInfo {
   const isChrome = /Chrome/.test(userAgent) && /Google Inc/.test(vendor)
   const isFirefox = /Firefox/.test(userAgent)
   const isSafari = /Safari/.test(userAgent) && /Apple Computer/.test(vendor)
-  const isBrave = /Brave/.test(userAgent) || (navigator.brave && navigator.brave.isBrave())
+  const isBrave = /Brave/.test(userAgent) || ((navigator as any).brave && (navigator as any).brave.isBrave())
 
   const isSandboxed = window.location.protocol === 'https:' && window.location.hostname !== 'localhost'
 

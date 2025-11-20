@@ -2,12 +2,17 @@ services:
   portfolio-frontend:
     image: portfolio-frontend:latest
     container_name: portfolio-frontend
-    ports:
-      - "${PORTFOLIO_FRONTEND_PORT:-3000}:80"
+    # Remove port mapping - nginx will proxy internally
+    # ports:
+    #   - "${PORTFOLIO_FRONTEND_PORT:-3000}:80"
+    networks:
+      - erp-network
     environment:
       - NODE_ENV=${PORTFOLIO_NODE_ENV:-production}
     restart: unless-stopped
 
 networks:
-  default:
-    driver: bridge
+  # default:
+  #   driver: bridge
+  erp-network:
+    external: true  # Connect to existing network created by ERP
